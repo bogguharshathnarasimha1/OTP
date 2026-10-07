@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login with OTP</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="page-shell">
+    <div class="container">
+      <div class="status-badge">Secure Access</div>
+      <img src="https://img.icons8.com/fluency/96/lock.png" alt="Logo" class="logo" />
+      <h2>Welcome Back</h2>
+      <p class="subtitle">Sign in securely with OTP</p>
+
+      <div id="login-section">
+        <input type="email" id="email" placeholder="Enter Email" required />
+        <div class="password-wrapper">
+          <input type="password" id="password" placeholder="Enter Password" required />
+          <button type="button" id="togglePassword" class="toggle-password" title="Show Password" tabindex="-1">Show</button>
+        </div>
+        <div id="password-strength" class="message"></div>
+        <div class="captcha-wrapper">
+          <input type="text" id="captcha" placeholder="Enter CAPTCHA" required />
+          <span id="captcha-value" class="captcha-value"></span>
+          <button type="button" id="refreshCaptcha" class="refresh-captcha" title="Refresh CAPTCHA">↻</button>
+        </div>
+        <button class="glow-btn" onclick="sendOTP()">Login</button>
+        <div id="login-message" class="message"></div>
+        <p class="auth-link">New here? <a href="register.html">Create an account</a></p>
+      </div>
+
+      <div id="otp-section" class="hidden">
+        <h3>Enter OTP</h3>
+        <p class="subtitle">We've sent a 6-digit code to your email</p>
+        <div class="otp-container">
+          <input type="text" maxlength="1" oninput="moveNext(this, 1)" />
+          <input type="text" maxlength="1" oninput="moveNext(this, 2)" />
+          <input type="text" maxlength="1" oninput="moveNext(this, 3)" />
+          <input type="text" maxlength="1" oninput="moveNext(this, 4)" />
+          <input type="text" maxlength="1" oninput="moveNext(this, 5)" />
+          <input type="text" maxlength="1" />
+        </div>
+        <button class="glow-btn" onclick="verifyOTP()">Verify OTP</button>
+        <div id="otp-message" class="message"></div>
+        <button class="back-btn" onclick="backToLogin()">← Back</button>
+      </div>
+
+      <div id="welcome-section" class="hidden">
+        <div class="profile-container">
+          <div class="profile-card">
+            <div class="profile-icon">👤</div>
+            <h2>Welcome</h2>
+            <p class="subtitle">You are logged in</p>
+            <div id="profile-content"></div>
+            <button class="glow-btn logout-btn" onclick="logout()" style="margin-top: 20px; width: 100%;">Logout</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
